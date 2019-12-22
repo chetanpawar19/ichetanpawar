@@ -1,19 +1,21 @@
-
 <!doctype html>
 <html lang="en">
-{% load staticfiles %}
+{% block initial_load %}
+{% endblock %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>iChetanPawar | Chetan Pawar</title>
+    <title>iChetanPawar - Chetan Pawar</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
       .bd-placeholder-img {
@@ -30,66 +32,64 @@
           font-size: 3.5rem;
         }
       }
-    </style>
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: grey;
+   text-align: center;
+}
+
+#image_card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 200px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+#card_title{
+  color:grey;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  height:35%;
+}
+
+</style>
+
   </head>
+
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'job' %}">iChetanPawar</a>
+  <a class="navbar-brand" href="{% url 'index' %}">iChetanPawar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link" href="">Bio</a>
-      <a class="nav-item nav-link" href="https://www.linkedin.com/in/ichetanpawar">Linkedin</a>
-	  <a class="nav-item nav-link" href="https://github.com/ichetanpawar">GitHub</a>
-      <a class="nav-item nav-link" href="{% url 'allblogs' %}">Notes</a>
-	  <a class="nav-item nav-link" href="#">Books</a>
-      <a class="nav-item nav-link" href="">Contact</a>
+      <a class="nav-item nav-link" href="">LinkedIn</a>
+	  <a class="nav-item nav-link" href="https://github.com/chetanpawar19">GitHub</a>
+      <a class="nav-item nav-link" href="{% url 'allnotes' %}">Notes</a>
     </div>
   </div>
 </nav>
 </header>
 
-<main role="main">
+    {% block body_contents %}
+    {% endblock %}
+<br/>
+<div class="footer" align="center">
+  <p>Developed by Chetan Pawar, {% now "Y" %}</p>
+</div>
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Hi, I'm Chetan Pawar.</h1><br/>
-      <img class="img-fluid rounded mx-auto d-block" alt="Chetan Pawar Image" src="{% static 'chetanpawar.jpg'%}" height="240" width="215"/>
-      <br/>
-      <p class="lead text-dark">Hey, My name is Chetan Pawar. I'm Software developer from Pune, India. I love to do coding, listening music!</p>
-      <p>
-        <a href="mailto:ichetanpawar@outlook.com" class="btn btn-secondary">Email Me</a>
-      </p>
-    </div>
-  </section>
-
-  <div class="album py-3 bg-light">
-    <h4 class="text-center text-secondary">Highlights</h5>
-    <div class="container">
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}"/>
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-              </div>
-            </div>
-          </div>
-
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<div class="card-footer text-light bg-dark text-center">
-   <p>Chetan Pawar, {% now "Y" %}</p>
- </div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block initial_load %}
+    {% load staticfiles %}
+{% endblock %}
+
+{% block body_contents %}
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Hi, I'm Chetan Pawar.</h1><br/>
+      <div id="image_card" class="card mb-8 shadow-sm ">
+      <img class="img-fluid rounded mx-auto d-block" alt="Chetan Pawar Image" src="{% static 'chetanpawar.jpg'%}" height="200" width="100%"/>
+      </div>
+      <br/>
+
+      <p class="lead text-dark">Hey, My name is Chetan Pawar. I'm Software developer from Pune, India. I love to do coding, listening music!</p>
+      <p>
+        <a href="mailto:chetanpawar19@outlook.com" class="btn btn-secondary">Email Me</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-3 bg-light">
+    <h5 class="text-center text-secondary">Highlights</h5><br/>
+    <div class="container">
+      <div class="row">
+        {% for highlight in highlights.all %}
+        <div class="col-md-4">
+          <div id="card_title" class="card mb-4 bg-light shadow-sm"><br/>
+            <h6 class="card-text text-center">{{ highlight.title }}</h6>
+            <div class="card-body bg-light">
+              <p class="card-text">{{ highlight.description }}</p>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
